@@ -1,0 +1,72 @@
+
+<QuizManager>:
+    Question1Screen:
+        name: "question1"
+    CorrectScreen:
+        name: "correct"
+    WrongScreen:
+        name: "wrong"
+    Question2Screen:
+        name: "question2"
+
+
+<Question1Screen>:
+    BoxLayout:
+        orientation: "vertical"
+        BoxLayout:
+            size_hint: 1,.5
+            orientation: "vertical"
+            Label:
+                text:"What color is a carrot?"
+                text_size:
+        BoxLayout:
+            orientation: "vertical"
+            spacing: "10dp"
+            Button:
+                text: "Blue"
+                background_color: 0,255,0
+                on_release: root.answer_question(False)
+            Button:
+                text: "I don't like carrots :("
+                background_color: 0,0,255
+                on_release: root.answer_question(False)
+            Button:
+                text: "Orange"
+                background_color: 255,0,0
+                on_release: root.answer_question(True)
+
+<Question2Screen>:
+    BoxLayout:
+        orientation: "vertical"
+        Label:
+            text: "whats 9 + 10?: "
+        TextInput:
+            id: a
+            hint_text: "You know what to put"
+        Button:
+            text: "Press Enter"
+            on_release: root.answer_question(a.text)
+
+<CorrectScreen>:
+    BoxLayout:
+        orientation: "vertical"
+        Button:
+            background_color: 0,255,0
+            text: "Correct! :)"
+            size_hint: 1,3
+        Button:
+            background_color: 255,0,255
+            text: "Next"
+            on_release: root.move_screen()
+
+<WrongScreen>:
+    BoxLayout:
+        orientation: "vertical"
+        Button:
+            background_color: 255,0,0
+            text: "Incorrect! :("
+            size_hint: 1,3
+        Button:
+            background_color: 255,0,255
+            text: "Next"
+            on_release: root.move_screen()
